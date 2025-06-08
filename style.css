@@ -1,0 +1,173 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E6E0F8;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px 30px 40px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px #5D3FD3;
+        background-color: #5D3FD3;
+    }
+    50% {
+        box-shadow: 0 0 20px #B08BEC;
+        background-color: #B08BEC;
+    }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #5D3FD3;
+    font-family: 'Cursive', sans-serif;
+    position: relative;
+    z-index: 2;
+}
+
+.header hr {
+    border: none;
+    height: 1px;
+    background-color: #D3CFE2;
+    margin-top: 40px;
+}
+
+.timeline {
+    position: relative;
+    margin-top: 25px;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 2px;
+    animation: glow 3s infinite ease-in-out;
+    background-color: #5D3FD3;
+    transform: translateX(-50%);
+}
+
+.event {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.event-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 45%;
+    text-align: center;
+}
+
+.event-content .emoji {
+    font-size: 25px;
+    line-height: 1;
+}
+
+.event-name {
+    flex-grow: 1;
+    word-break: break-word;
+    text-align: right;
+}
+
+.event-time {
+    width: 45%;
+    text-align: left;
+}
+
+/* Styles for events on the left side of the timeline (default) */
+.event:nth-child(odd) .event-content {
+    order: 1;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.event:nth-child(odd) .event-name {
+    text-align: right;
+}
+
+.event:nth-child(odd) .event-time {
+    order: 2;
+    text-align: left;
+}
+
+/* Styles for events on the right side of the timeline */
+.event:nth-child(even) .event-content {
+    order: 2;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.event:nth-child(even) .event-name {
+    text-align: left;
+}
+
+.event:nth-child(even) .event-time {
+    order: 1;
+    text-align: right;
+}
+
+/* Dot on the timeline for each event */
+.event::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: #5D3FD3;
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0 0 5px #5D3FD3;
+}
+
+.download-btn {
+    display: block;
+    margin: 40px auto 0;
+    background-color: #5D3FD3;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+.download-btn:hover {
+    background-color: #4B2EA6;
+}

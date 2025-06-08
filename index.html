@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Invitación con línea de tiempo para evento" />
+<title>Itinerario del Evento</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="tsparticles"></div>
+
+<div class="container">
+    <div class="header">
+        <h1>Itinerario del Evento</h1>
+        <hr />
+    </div>
+
+    <div class="timeline">
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Misa</div>
+                <span class="emoji">⛪</span>
+            </div>
+            <div class="event-time">2:00</div> </div>
+
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Entrada 15 Años</div> <span class="emoji">👸</span>
+            </div>
+            <div class="event-time">3:30 ~ 4:00</div> </div>
+
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Recepción</div> <span class="emoji">🍷</span>
+            </div>
+            <div class="event-time">4:00</div> </div>
+
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Vals y Entrega de ultimo juguete</div>
+                <span class="emoji">🧸</span>
+            </div>
+            <div class="event-time">4:05 ~ 4:30</div> </div>
+        
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Brindis</div>
+                <span class="emoji">🥂</span>
+            </div>
+            <div class="event-time">4:30 ~ 4:35</div> </div>
+
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Vals Familiar</div>
+                <span class="emoji">👨‍👩‍👧‍👦</span>
+            </div>
+            <div class="event-time">4:35 ~ 4:45</div> </div>
+        
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Comida</div>
+                <span class="emoji">🍽️</span>
+            </div>
+            <div class="event-time">4:45</div> </div>
+        
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Baile Sorpresa</div>
+                <span class="emoji">💃</span>
+            </div>
+            <div class="event-time">5:40</div> </div>
+
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Se abrirá pista</div>
+                <span class="emoji">🎶</span>
+            </div>
+            <div class="event-time">5:50</div> </div>
+
+        <div class="event">
+            <div class="event-content">
+                <div class="event-name">Corte de Pastel</div>
+                <span class="emoji">🎂</span>
+            </div>
+            <div class="event-time">8:00</div> </div>
+    </div>
+
+    <a href="invitacion vertical para 15 años floral lila (1).pdf" download="Invitacion_XV_Leilani.pdf">
+        <button class="download-btn">
+            Descargar Invitación
+        </button>
+    </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+<script>
+    tsParticles.load("tsparticles", {
+        "particles": {
+            "number": {
+                "value": 20,
+                "density": {
+                    "enable": true,
+                    "area": 800
+                }
+            },
+            "shape": {
+                "type": "image",
+                "image": {
+                    "src": "https://static.vecteezy.com/system/resources/thumbnails/035/999/208/small/ai-generated-purple-violet-beautiful-butterfly-drawing-watercolor-clip-art-illustration-png.png",
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            "size": {
+                "value": 30,
+                "random": true
+            },
+            "move": {
+                "enable": true,
+                "speed": 1,
+                "direction": "none",
+                "straight": false,
+                "outModes": {
+                    "default": "bounce"
+                },
+                "angle": {
+                    "value": 45,
+                    "offset": 0
+                },
+                "rotate": {
+                    "value": { "min": 0, "max": 360 },
+                    "animation": {
+                        "enable": true,
+                        "speed": 3,
+                        "sync": false
+                    }
+                }
+            },
+            "rotate": { // This rotate seems redundant with the one inside move.angle. Consider removing if not needed.
+                "value": 0,
+                "random": true,
+                "direction": "random",
+                "animation": {
+                    "enable": true,
+                    "speed": 1,
+                    "sync": false
+                }
+            },
+            "opacity": {
+                "value": 0.7
+            },
+            "links": {
+                "enable": false
+            }
+        },
+        "detectRetina": true
+    });
+</script>
+</body>
+</html>
