@@ -4,6 +4,13 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    /* Asegura que el cuerpo ocupe al menos la altura de la ventana para centrar */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Permite que el contenido se apile verticalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    overflow-x: hidden; /* Evita el scroll horizontal */
 }
 
 #tsparticles {
@@ -17,13 +24,15 @@ body {
 
 .container {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 20px auto; /* Centra el contenedor y le da margen */
     background-color: #FFFFFF;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 30px 30px 40px 30px;
     position: relative;
     z-index: 1;
+    width: calc(100% - 40px); /* Ajusta el ancho para tener margen en los lados en móvil */
+    box-sizing: border-box; /* Incluye padding en el width */
 }
 
 @keyframes glow {
@@ -41,7 +50,8 @@ body {
     text-align: center;
     margin-bottom: 25px;
     color: #5D3FD3;
-    font-family: 'Cursive', sans-serif;
+    /* Considera cambiar a 'cursive' si tienes una fuente específica, de lo contrario, Arial es fallback */
+    font-family: 'Cursive', sans-serif; 
     position: relative;
     z-index: 2;
 }
@@ -63,7 +73,7 @@ body {
 .timeline::before {
     content: "";
     position: absolute;
-    left: 50%;
+    left: 50%; /* Línea central por defecto */
     top: 0;
     bottom: 0;
     width: 3px;
@@ -85,7 +95,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    width: 45%;
+    width: 45%; /* Ancho por defecto para pantallas grandes */
     text-align: center;
 }
 
@@ -101,7 +111,7 @@ body {
 }
 
 .event-time {
-    width: 45%;
+    width: 45%; /* Ancho por defecto para pantallas grandes */
     text-align: left;
 }
 
@@ -141,7 +151,7 @@ body {
 .event::before {
     content: "";
     position: absolute;
-    left: 50%;
+    left: 50%; /* Punto central por defecto */
     transform: translateX(-50%);
     width: 12px;
     height: 12px;
@@ -170,4 +180,118 @@ body {
 
 .download-btn:hover {
     background-color: #4B2EA6;
+}
+
+/* === MEDIA QUERIES PARA ADAPTABILIDAD MÓVIL === */
+
+/* Para pantallas con un ancho máximo de 768px (tablets y celulares grandes) */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px auto; /* Reduce el margen superior/inferior del contenedor */
+        padding: 20px; /* Reduce el padding interno del contenedor */
+    }
+
+    .header h1 {
+        font-size: 2.5rem; /* Ajusta el tamaño del título */
+    }
+
+    .timeline {
+        padding: 0 10px; /* Reduce el padding de la línea de tiempo */
+    }
+
+    /* Mueve la línea central a la izquierda para un diseño de una sola columna */
+    .timeline::before {
+        left: 20px; /* Mueve la línea a la izquierda */
+        transform: translateX(0); /* Quita la transformación previa */
+    }
+
+    .event {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+        margin-bottom: 30px; /* Más espacio entre eventos */
+        padding-left: 30px; /* Espacio para la línea y el punto */
+    }
+
+    .event-content,
+    .event-time {
+        width: 100%; /* Ocupan todo el ancho disponible */
+        text-align: left; /* Alinea el texto a la izquierda */
+        justify-content: flex-start; /* Alinea el contenido a la izquierda */
+        margin-bottom: 5px; /* Pequeño margen entre el nombre y la hora */
+    }
+
+    .event-name {
+        text-align: left; /* Asegura que el nombre del evento se alinee a la izquierda */
+        font-size: 1.1rem; /* Ajusta el tamaño de fuente */
+    }
+
+    .event-time {
+        text-align: left; /* Asegura que la hora se alinee a la izquierda */
+        font-size: 0.95rem; /* Ajusta el tamaño de fuente */
+        color: #777; /* Un color ligeramente más suave para la hora */
+    }
+
+    .event-content .emoji {
+        font-size: 20px; /* Reduce el tamaño del emoji */
+    }
+
+    /* Ajusta los puntos de los eventos para alinearse con la nueva línea */
+    .event::before {
+        left: 17px; /* Ajusta la posición para que esté sobre la línea */
+        transform: translateX(-50%); /* Lo mantiene centrado con el eje vertical del punto */
+    }
+
+    /* Desactiva los estilos nth-child(odd/even) ya que ahora es una sola columna */
+    .event:nth-child(odd) .event-content,
+    .event:nth-child(odd) .event-name,
+    .event:nth-child(odd) .event-time,
+    .event:nth-child(even) .event-content,
+    .event:nth-child(even) .event-name,
+    .event:nth-child(even) .event-time {
+        order: unset; /* Reinicia el orden */
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .download-btn {
+        width: calc(100% - 40px); /* Ajusta el ancho del botón al contenedor móvil */
+        font-size: 0.9rem; /* Reduce el tamaño de fuente del botón */
+        padding: 10px 15px; /* Ajusta el padding del botón */
+    }
+}
+
+/* Para pantallas aún más pequeñas (ej. celulares muy compactos) */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px; /* Más reducción del padding */
+        margin: 10px; /* Margen más ajustado */
+    }
+
+    .header h1 {
+        font-size: 2rem; /* Título aún más pequeño */
+    }
+
+    .timeline {
+        padding: 0 5px; /* Menos padding en la línea de tiempo */
+    }
+
+    .timeline::before {
+        left: 15px; /* Mueve la línea aún más a la izquierda */
+    }
+
+    .event {
+        padding-left: 25px; /* Ajusta el padding para los eventos */
+    }
+
+    .event::before {
+        left: 12px; /* Ajusta el punto de los eventos */
+    }
+
+    .event-name {
+        font-size: 1rem;
+    }
+
+    .event-time {
+        font-size: 0.9rem;
+    }
 }
